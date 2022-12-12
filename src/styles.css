@@ -65,7 +65,7 @@ p {
 }
 
 .teste{
-    display: inline-block;
+    display: flex;
     padding: 0 11.2rem;
     color:var(--yellow);
 }
@@ -75,4 +75,73 @@ p {
     background-color: var(--red);
     color: var(--brown);
     transition: all 0.2s ease-in;  
+}
+
+.erro{
+    margin-top: 2rem;
+    display: none;
+}
+
+button{
+    width: 6rem;
+    height: 1.7rem;
+}
+
+.modalMenu{
+    margin-left: 2rem;
+    text-align: start;
+}
+
+.modalBtn{
+    margin: 1rem 2rem;
+    background-color: #ffffff00;
+    font-size: 1.5rem;
+    width: 10rem;
+    height: 2.5rem;
+    border: 0;
+
+}
+
+.modalBtn:hover{
+    background-color:var(--yellow);
+    color: var(--brown);
+    transition: all 0.2s ease-in;  
+    border-radius: 0.25rem;
+}
+
+.modal{
+    max-width: 30%;
+    max-height: 100%;
+    position: absolute;
+    top: 100px;
+    left: 40px;
+    right: 40px;
+    bottom: 40px;
+    background-color:papayawhip;
+    border-radius: .5rem;
+} 
+
+.overlay{
+    background-color: #ffffff00;
+}
+
+.editMenu{
+   display: flex;
+   justify-content: start;
+   align-items: flex-start;
+   flex-direction: column;
+   position: absolute;
+   left: 40rem;
+}
+
+.selectCategory{
+   display: flex;
+   align-items: center;
+   justify-content: center;
+}
+
+.btnEdit{
+    background-color: rgba(178, 34, 34, 0);
+    border:0;
+    justify-content: center;
 }

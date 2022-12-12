@@ -8,6 +8,11 @@ import {
   Route,
 } from "react-router-dom";
 import Categorias from './pages/Categorias';
+import Login from './pages/Login';
+import AdminMenu from './pages/AdminMenu';
+import AdminCategory from './pages/AdminCategory';
+import AdminItens from './pages/AdminItens';
+import AdminUser from './pages/AdminUser';
 
 const router = createBrowserRouter([
   {
@@ -16,6 +21,21 @@ const router = createBrowserRouter([
   },{
     path:'/categorias',
     element:<Categorias/>
+  },{
+    path:'/admin/login',
+    element:<Login/>
+  },{
+    path:'/admin',
+    element:<AdminMenu/>
+  },{
+    path:'/admin/category',
+    element:<AdminCategory/>
+  },{
+    path:'/admin/itens',
+    element:<AdminItens/>
+  },{
+    path:'/admin/user',
+    element:<AdminUser/>
   }
 
 ])
