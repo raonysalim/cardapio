@@ -17,9 +17,9 @@ export default function Login(){
             <br />
             <br />
             <form onSubmit={handleSubmit(onSubmit)} className='form'>
-            <input type="text" {...register("user")} size={50} placeholder='Digite seu usuário' />
+            <input type="text" className="inputForm" {...register("user")} size={50} placeholder='Digite seu usuário' />
             <br />
-            <input type="password" size={50} placeholder="Digite sua senha" {...register("password")}/>
+            <input type="password" className="inputForm" size={50} placeholder="Digite sua senha" {...register("password")}/>
             <br />
             <br />
             <button type="submit" >Login</button>

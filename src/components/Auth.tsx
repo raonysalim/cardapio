@@ -7,6 +7,8 @@ export default async function Auth({user, password}){
             password
          })
          localStorage.setItem('token', res.data.token)
+         localStorage.setItem('id', res.data.id)
+         console.log(res)
         return 'token gerado com sucesso!'
     }catch(err){
 

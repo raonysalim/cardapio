@@ -1,5 +1,6 @@
 import axios from "axios";
 import { useState,useEffect } from "react"
+import { Link } from "react-router-dom";
 import Title from "../components/Title";
  
 export default function Categorias(){
@@ -22,7 +23,7 @@ export default function Categorias(){
         {categorias.map((v)=>{
           return (<div className="menu" key={v.id}> 
           <span >
-            <p className="teste">{v.name}</p></span></div>)
+            <Link className='subtitle' to={`/itens/${v.id}`}>{v.name}</Link></span></div>)
 })}
        </div>
     ) 
