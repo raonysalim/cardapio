@@ -19,15 +19,17 @@ export default function Itens (){
         <p>Clique na categoria desejada para visualizar nossas opções!</p>
         <br /> <br />
         {itens.map((v)=>{
-          return (<div className="menu" key={v.id}> 
-          <span >
+          return (<div className="menuItem" key={v.id}> 
             <div className="headerItens">
             <p className='textItem'>{v.name}</p>
-            <p className='priceItem'>{v.price}</p>
+            <p className='priceItem'> R$: {v.price}</p>
             </div>
-           <h3>imagemmmmmmmmmmm </h3>
-           <p className="descriptionItem">{v.description}</p>
-            </span></div>)
+            <img src='https://picsum.photos/200/300' className="image"/>
+
+           <div className="description">
+           <p>{v.description}</p>
+           </div>
+           </div>)
         })}
        </div>)
 }
