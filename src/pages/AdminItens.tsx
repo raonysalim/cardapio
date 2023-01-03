@@ -1,19 +1,23 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import EditMenu from "../components/EditMenu";
 import Title from "../components/Title";
 import Modal from "react-modal";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { AiFillDelete, AiFillEdit } from "react-icons/ai";
 import DeleteItem from "../components/DeleteItem";
-import { Context } from "../Context/AuthContext";
 import IsAuth from "../components/IsAuth";
 import Erro from "./Erro";
 
 export default function AdminItens() {
   if (!IsAuth()) {
-    return <Erro />;
+    return (
+      <div>
+        <Erro />
+      </div>
+    );
   }
+
   const { categoryId } = useParams();
   const [itens, setItens] = useState([]);
 
@@ -40,7 +44,6 @@ export default function AdminItens() {
     <div>
       <Title />
       <EditMenu />
-      {/* <h1 className={'menuTitle'}>{itens[0]}</h1> */}
       {itens.map((i) => {
         return (
           <div key={i.id}>
@@ -53,7 +56,7 @@ export default function AdminItens() {
                     `/admin/edit/itens/${i.id}?name=${i.name}&description=${
                       i.description
                     }&price=${i.price}&category=${i.categoryId}&image=${
-                      i.image ? true : ""
+                      i.image ? true : false
                     }`
                   );
                 }}

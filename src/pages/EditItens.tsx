@@ -26,16 +26,12 @@ export default function EditItens() {
   const pricePlaceholder = query.get("price");
   const categoryPlaceholder = Number(query.get("category"));
   const imagePlaceholder = query.get("image");
-
+  const [image, setImage] = useState("");
   const { register, handleSubmit } = useForm();
-
   const priceConvert = (price: string) => {
-    return String((price = Number(price.replace(",", ".")).toFixed(2))).replace(
-      ".",
-      ","
-    );
+    return String((price = Number(price.replace(",", ".")).toFixed(2)));
   };
-  const onSubmit = ({ name, description, price, categoryId, image }) => {
+  const onSubmit = async ({ name, description, price, categoryId, image }) => {
     if (id) {
       axios(`http://localhost:3000/itens/${id}`, {
         method: "put",
@@ -44,13 +40,25 @@ export default function EditItens() {
           description,
           price: priceConvert(price),
           categoryId: Number(categoryId),
-          image,
         },
         headers: {
           Authorization: "Bearer " + localStorage.getItem("token"),
         },
       })
         .then(() => {
+          const formData = new FormData();
+          formData.append("image", image[0]);
+          console.log(image.length);
+
+          if (image.length != 1) return navigate(`/admin/itens/${id}`);
+          axios
+            .post(`http://localhost:3000/itens/image/${id}`, formData, {
+              headers: {
+                Authorization: "Bearer " + localStorage.getItem("token"),
+              },
+            })
+            .then((e) => {})
+            .catch((e) => console.log(e));
           navigate(`/admin/itens/${id}`);
         })
         .catch((e) => {
@@ -113,30 +121,28 @@ export default function EditItens() {
         />
         <label className="formLabel">Categoria</label>
         <select className="formLabel" {...register("categoryId")}>
-          <option value={null}>Escolha uma categoria</option>
+          <option value={0}>Nenhuma Categoria</option>
           {category.map((v) => (
-            <option value={v.id}>{v.name}</option>
+            <option key={v.id} value={v.id}>
+              {v.name}
+            </option>
           ))}
         </select>
-        <br />
-        <div className="imageBtn">
-          <label className="formLabel">Foto</label>
-          <button
-            className="inputForm imageInput"
-            type="submit"
-            {...register("image")}
-          >
-            {imagePlaceholder.length > 0 ? (
-              <AiFillCheckCircle />
-            ) : (
-              <AiFillCloseSquare />
-            )}
-          </button>
-        </div>
-        <p className={imagePlaceholder != null ? "hidden" : null}>
-          Seu item ainda não possui uma imagem
-        </p>
-        <br />
+        {imagePlaceholder ? (
+          <div>
+            <div className="imageBtn">
+              <label className="formLabel">Foto</label>
+              <br />
+              <input
+                type="file"
+                {...register("image")}
+                className={"imageInput"}
+              />
+            </div>
+            <br />
+            <br />
+          </div>
+        ) : null}
         <br />
         <button type="submit" className="inputForm">
           Enviar
