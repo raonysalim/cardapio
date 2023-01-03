@@ -2,17 +2,17 @@ import EditMenu from "../components/EditMenu";
 import Title from "../components/Title";
 import { useForm } from "react-hook-form";
 import { useNavigate } from "react-router-dom";
-import { useContext, useEffect, useState } from "react";
 import axios from "axios";
-import { Context } from "../Context/AuthContext";
 import IsAuth from "../components/IsAuth";
 import Erro from "./Erro";
+import { useContext } from "react";
+import { Context } from "../Context/AuthContext";
 
 export default function AdminUser() {
   if (!IsAuth()) {
     return <Erro />;
   }
-
+  const { handleLogout } = useContext(Context);
   const { register, handleSubmit } = useForm();
   const navigate = useNavigate();
   const onSubmit = ({ user, password }) => {
@@ -29,9 +29,7 @@ export default function AdminUser() {
       .then(() => {
         navigate("/");
       })
-      .catch((e) => {
-        console.log(e);
-      });
+      .catch((e) => {});
   };
   return (
     <div>
@@ -52,6 +50,9 @@ export default function AdminUser() {
         />
         <button type="submit">Atualizar</button>
       </form>
+      <br />
+      <br />
+      <button onClick={handleLogout}>Sair</button>
     </div>
   );
 }

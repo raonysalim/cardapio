@@ -3,7 +3,6 @@ import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useLocation, useNavigate, useParams } from "react-router-dom";
 import { useEffect, useMemo, useState } from "react";
-import { AiFillCheckCircle, AiFillCloseSquare } from "react-icons/ai";
 import IsAuth from "../components/IsAuth";
 import Erro from "./Erro";
 
@@ -24,10 +23,9 @@ export default function EditItens() {
   const namePlaceholder = query.get("name");
   const descriptionPlaceholder = query.get("description");
   const pricePlaceholder = query.get("price");
-  const categoryPlaceholder = Number(query.get("category"));
   const imagePlaceholder = query.get("image");
-  const [image, setImage] = useState("");
   const { register, handleSubmit } = useForm();
+
   const priceConvert = (price: string) => {
     return String((price = Number(price.replace(",", ".")).toFixed(2)));
   };
@@ -48,8 +46,6 @@ export default function EditItens() {
         .then(() => {
           const formData = new FormData();
           formData.append("image", image[0]);
-          console.log(image.length);
-
           if (image.length != 1) return navigate(`/admin/itens/${id}`);
           axios
             .post(`http://localhost:3000/itens/image/${id}`, formData, {
@@ -58,12 +54,10 @@ export default function EditItens() {
               },
             })
             .then((e) => {})
-            .catch((e) => console.log(e));
+            .catch((e) => {});
           navigate(`/admin/itens/${id}`);
         })
-        .catch((e) => {
-          console.log(e);
-        });
+        .catch((e) => {});
     } else {
       axios("http://localhost:3000/itens", {
         method: "post",
@@ -81,7 +75,7 @@ export default function EditItens() {
         .then((res) => {
           navigate(`/admin/itens/${res.data.categoryId}`);
         })
-        .catch((e) => console.log(e));
+        .catch((e) => {});
     }
   };
 

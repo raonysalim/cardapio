@@ -1,23 +1,15 @@
 import axios from "axios";
-import { useContext, useEffect, useState } from "react";
+import { useEffect, useState } from "react";
 import EditMenu from "../components/EditMenu";
 import Title from "../components/Title";
-import { AiFillDelete, AiFillEdit } from "react-icons/ai";
-import Modal from "react-modal";
-import DeleteCategory from "../components/DeleteCategory";
-import { Link, useNavigate } from "react-router-dom";
-import { Context } from "../Context/AuthContext";
+import { Link } from "react-router-dom";
 import IsAuth from "../components/IsAuth";
 import Erro from "./Erro";
-Modal.setAppElement("#root");
 
 export default function AdminCategory() {
   if (!IsAuth()) {
     return <Erro />;
   }
-  const navigate = useNavigate();
-
-  const [id, setId] = useState();
 
   const [categorias, setCategorias] = useState<any>([]);
   useEffect(() => {

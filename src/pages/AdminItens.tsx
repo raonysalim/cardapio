@@ -20,9 +20,10 @@ export default function AdminItens() {
 
   const { categoryId } = useParams();
   const [itens, setItens] = useState([]);
-
   const navigate = useNavigate();
   const [modalIsOpen, setIsOpen] = useState(false);
+  const [id, setId] = useState();
+  const [name, setName] = useState();
 
   function openModal() {
     setIsOpen(true);
@@ -31,9 +32,6 @@ export default function AdminItens() {
   function closeModal() {
     setIsOpen(false);
   }
-
-  const [id, setId] = useState();
-  const [name, setName] = useState();
 
   useEffect(() => {
     axios(`http://localhost:3000/itens/${categoryId}`).then((res) => {

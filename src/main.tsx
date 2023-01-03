@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom/client";
 import HomePage from "./pages/HomePage";
 import "./styles.css";
-import { createBrowserRouter, RouterProvider, Route } from "react-router-dom";
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Categorias from "./pages/Categorias";
 import Login from "./pages/Login";
 import AdminMenu from "./pages/AdminMenu";
@@ -15,8 +15,6 @@ import CategoryItem from "./pages/CategoryItem";
 import Itens from "./pages/Itens";
 import { AuthProvider } from "./Context/AuthContext";
 import Erro from "./pages/Erro";
-
-function isAuth() {}
 
 const router = createBrowserRouter([
   {

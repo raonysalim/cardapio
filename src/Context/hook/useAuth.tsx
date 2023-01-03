@@ -24,6 +24,7 @@ export default function useAuth() {
     }
   }
   function handleLogout() {
+    localStorage.clear();
     setAuth(false);
   }
   return { auth, handleLogin, handleLogout };
