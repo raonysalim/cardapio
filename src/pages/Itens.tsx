@@ -15,14 +15,14 @@ export default function Itens() {
   return (
     <div>
       <Title />
-      <CategoryTitle />
+      <CategoryTitle msg={"Clique em cardápio para voltar"} />
       <br /> <br />
       {itens.map((v) => {
         return (
-          <div className="menuItem" key={v.id}>
-            <div className="headerItens">
-              <p className="textItem">{v.name}</p>
-              <p className="priceItem"> R$: {v.price}</p>
+          <div className="itensMenu" key={v.id}>
+            <div className="header">
+              <p className="content">{v.name}</p>
+              <p className="price"> R$: {v.price}</p>
             </div>
             {v.image ? <img src={v.image_url} className="image" /> : null}
             <div>

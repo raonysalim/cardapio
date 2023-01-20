@@ -49,10 +49,12 @@ export default function AdminUser() {
           {...register("password")}
         />
         <button type="submit">Atualizar</button>
+        <br />
+        <br />
+        <br />
+        <br />
+        <button onClick={handleLogout}>Sair</button>
       </form>
-      <br />
-      <br />
-      <button onClick={handleLogout}>Sair</button>
     </div>
   );
 }

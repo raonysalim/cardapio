@@ -23,14 +23,16 @@ export default function EditItens() {
   const namePlaceholder = query.get("name");
   const descriptionPlaceholder = query.get("description");
   const pricePlaceholder = query.get("price");
-  const imagePlaceholder = query.get("image");
+  const categoryPlaceholder = query.get("category");
   const { register, handleSubmit } = useForm();
 
   const priceConvert = (price: string) => {
     return String((price = Number(price.replace(",", ".")).toFixed(2)));
   };
+
   const onSubmit = async ({ name, description, price, categoryId, image }) => {
     if (id) {
+      if (categoryId == 0) categoryId = categoryPlaceholder;
       axios(`http://localhost:3000/itens/${id}`, {
         method: "put",
         data: {
@@ -46,7 +48,7 @@ export default function EditItens() {
         .then(() => {
           const formData = new FormData();
           formData.append("image", image[0]);
-          if (image.length != 1) return navigate(`/admin/itens/${id}`);
+          if (image.length != 1) return navigate(`/admin/itens`);
           axios
             .post(`http://localhost:3000/itens/image/${id}`, formData, {
               headers: {
@@ -55,7 +57,7 @@ export default function EditItens() {
             })
             .then((e) => {})
             .catch((e) => {});
-          navigate(`/admin/itens/${id}`);
+          navigate(`/admin/itens`);
         })
         .catch((e) => {});
     } else {
@@ -64,7 +66,7 @@ export default function EditItens() {
         data: {
           name,
           description,
-          price,
+          price: priceConvert(price),
           categoryId: Number(categoryId),
           image,
         },
@@ -73,7 +75,22 @@ export default function EditItens() {
         },
       })
         .then((res) => {
-          navigate(`/admin/itens/${res.data.categoryId}`);
+          const formData = new FormData();
+          formData.append("image", image[0]);
+          if (image.length != 1) return navigate(`/admin/itens`);
+          axios
+            .post(
+              `http://localhost:3000/itens/image/${res.data.id}`,
+              formData,
+              {
+                headers: {
+                  Authorization: "Bearer " + localStorage.getItem("token"),
+                },
+              }
+            )
+            .then((e) => {})
+            .catch((e) => {});
+          navigate(`/admin/itens`);
         })
         .catch((e) => {});
     }
@@ -92,29 +109,29 @@ export default function EditItens() {
       <br />
       <br />
       <form onSubmit={handleSubmit(onSubmit)} className="form">
-        <label className="formLabel">Nome do Item</label>
+        <label>Nome do Item</label>
         <input
-          className="inputForm"
+          className="inputItem"
           type="text"
           {...register("name")}
           defaultValue={namePlaceholder}
         />
-        <label className="formLabel">Descrição</label>
+        <label>Descrição</label>
         <input
-          className="inputForm"
+          className="inputItem"
           type="text"
           {...register("description")}
           defaultValue={descriptionPlaceholder}
         />
-        <label className="formLabel">Preço</label>
+        <label>Preço</label>
         <input
-          className="inputForm"
-          type="text"
+          className="inputItem"
+          type="number"
           {...register("price")}
           defaultValue={pricePlaceholder}
         />
         <label className="formLabel">Categoria</label>
-        <select className="formLabel" {...register("categoryId")}>
+        <select className="selectForm" {...register("categoryId")}>
           <option value={0}>Nenhuma Categoria</option>
           {category.map((v) => (
             <option key={v.id} value={v.id}>
@@ -122,24 +139,22 @@ export default function EditItens() {
             </option>
           ))}
         </select>
-        {imagePlaceholder ? (
-          <div>
-            <div className="imageBtn">
-              <label className="formLabel">Foto</label>
-              <br />
-              <input
-                type="file"
-                {...register("image")}
-                className={"imageInput"}
-              />
-            </div>
+        <div>
+          <div className="imageBtn">
+            <label className="formLabel">Foto</label>
             <br />
-            <br />
+            <input
+              type="file"
+              {...register("image")}
+              className={"imageInput"}
+            />
           </div>
-        ) : null}
+          <br />
+          <br />
+        </div>
         <br />
         <button type="submit" className="inputForm">
-          Enviar
+          Salvar!
         </button>
       </form>
     </div>

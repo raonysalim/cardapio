@@ -1,164 +1,134 @@
+/* Configurações gerais */
 :root{
     --brown: #351e19;
     --red: #c9240f;
     --yellow: rgb(255, 174, 0);
 }
-
-* {
+*{
     margin: 0;
     padding: 0;
-    outline:none;
     box-sizing: border-box;
 }
 
-body {
-    font-family: sans-serif;
+html{
+    font-size: 62.5%;
+}
+
+body{
     background-color: var(--brown);
-    line-height: 1.5;
-  }
+}
 
-div {
-    max-width: 70%;
-    margin: 0 auto;
+/* Componentes */
+
+.title{
     text-align: center;
-    margin-top: 3rem;
+    /* background-color: #c9240f; */
+    font-size: 3rem;
+    margin-top: 6rem;
+    font-weight: bold;
 }
 
-.title {
-    font-size:5rem;
+.title .titleContent{
+    text-decoration: none;
     color: var(--red);
-    text-decoration: none;
-    font-weight: bold;
+    letter-spacing: 0.8rem;
 }
 
-.subtitle {
-    display: inline-block;
-    margin-top: 2rem;
-    font-size: 1.7rem;
+/* subtitles */
+
+.categoryTitle{
+    font-size: 2.5rem;
+    text-align: start;
+    margin-top: 3rem;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+.categoryTitle .content{
+    text-decoration: none;
     color: var(--yellow);
-    padding: 0.7rem 1.7rem;
-    border-radius: 0.15rem;
-    text-decoration: none;
-    font-weight: bold;
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+    text-align: center;
 }
 
-.subtitle:hover{
-    cursor:pointer;
+.categoryTitle .content:hover{
     background-color: var(--red);
     color: var(--brown);
     transition: all 0.2s ease-in;  
 }
 
-.menu{
-    margin-top: 2.6rem;
-    font-size: 1.5rem;
+.categoryTitle .contentSubtitle{
+    text-decoration: none;
+    color: var(--yellow);
+    padding: 1rem 2.5rem;
+    border-radius: 0.5rem;
+}
+
+
+.categoryTitle p{
+    color: var(--yellow);
+    font-size: 1.3rem;
+}
+
+.pagErro{
     display: flex;
     justify-content: center;
     align-items: center;
+    margin-top: 10rem;
+    font-size: 10rem;
+    color: var(--yellow);
 }
 
-.menuTitle{
-    color: var(--yellow);
-    margin-top: 2.3rem;
+/* Category */
+
+.categoryMenu{
+    display: flex;
+    text-align: center;
+    justify-content: center;
+    max-width: 70%;
+    margin: 2rem auto;
+}
+
+.categoryMenu .content{
     font-size: 3rem;
     text-decoration: none;
-    font-weight: bold;
-}
-
-p {
     color: var(--yellow);
 }
 
+/* Itens */
 
-.erro{
-    margin-top: 2rem;
-    display: none;
-}
-
-button{
-    width: 6rem;
-    height: 1.7rem;
-    background-color: var(--yellow);
-    border-radius: .25rem;
-    border-width: 0;
-    margin-right: 1rem
-}
-
-.modalMenu{
-    margin-left: 2rem;
-    text-align: start;
-}
-
-.modalBtn{
-    margin: 1rem 2rem;
-    background-color: #ffffff00;
-    font-size: 1.5rem;
-    width: 10rem;
-    height: 2.5rem;
-    border: 0;
-
-}
-
-.modalBtn:hover{
-    background-color:var(--yellow);
-    color: var(--brown);
-    transition: all 0.2s ease-in;  
-    border-radius: 0.25rem;
-}
-
-.modal{
-    max-width: 35%;
-    max-height: 20%;
-    position: absolute;
-    top: 200px;
-    left: 40px;
-    right: 40px;
-    bottom: 40px;
-    background-color:papayawhip;
-    border-radius: .5rem;
-} 
-
-.overlay{
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
-    background-color: #351e19d3;
-}
-
-.editMenu{
-   display: flex;
-   justify-content: start;
-   align-items: flex-start;
-   flex-direction: column;
-   position: absolute;
-   left: 40rem;
-}
-
-.selectCategory{
-   display: flex;
-   align-items: center;
-   justify-content:center;
-   font-size: 2rem;
-}
-
-.btnEdit{
-    background-color: rgba(178, 34, 34, 0);
-    border:0;
-    padding: 0;
+.itensMenu{
+    width: 70%;
+    margin:2rem auto ;
+    flex-direction: column;
+    display: flex;
+    text-align: center;
+    color: var(--yellow);
+    font-size: 1.3rem;
+    align-items: center;
     justify-content: center;
-    height: 2rem;
-    width: 2rem; 
-    margin-left: 2rem;
-    margin-right: 0;
 }
 
-.btnEdit:hover{
-    color: var(--red);
-    cursor: pointer;
-    transition: all 0.2s ease-in;  
+.itensMenu .header{
+    margin-top: 1rem;
+    width: 100%;
+    display: flex;
+    border-bottom: .2rem dotted var(--yellow);
+    justify-content: space-between;
 }
+
+.itensMenu .image{
+    margin:  2rem 0;
+    width: 80%;
+    box-shadow: 2px 2px 5px black;
+}
+
+
+/* admin login */
 
 .form{
     display: flex;
@@ -167,77 +137,234 @@ button{
     align-items: center;
 }
 
-.formLabel{
-    color: var(--yellow);
-    font-size: 2rem;
-}
-
-.inputForm{
-    width: 30rem;
+.form input{
+    width: 70%;
     height: 2.5rem;
-    margin-bottom: 3rem;
-    font-size: 1.6rem;
-    border-radius: .3rem;
 }
 
-.imageInput{
-    width: 30rem;
-    color: var(--yellow);
+.form button{
+    margin-top: 1rem;
+    width: 25%;
+    height: 3rem;
+    color: var(--brown);
+    background-color: var(--yellow);
+    border-style: none;
+    border-radius: 0.4rem;
 }
 
-.imageBtn{
-    display: flex;
-    justify-content: center;
-    align-items:  flex-start;
-    flex-direction: column;
+.form p{
+    font-size: 2rem;
 }
 
 .hidden{
     display: none;
 }
+.erro{
+    color: var(--red);
+}
 
-.textItem{
+/* admin menu */
+
+.editMenu{
+    display: flex;
+    font-size: 3rem;
+    margin: 4rem 2rem 0;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.editMenu .subtitle{
+    color: var(--yellow);
+    text-decoration:none ;
+}
+
+.selectCategory{
+    font-size: 3rem;
+    display: flex;
+    justify-content: end;
+    margin: 2rem 2rem;
+}
+
+.selectCategory .btnEdit{
+    margin-right: 1rem;
+
+}
+
+.selectCategory p {
+    color: var(--yellow);
+    margin-right: auto;
+}
+.selectCategory button {
+    justify-self: flex-end;
+    align-items: flex-end;
+}
+
+.newCategory {
+    display: flex;
+    justify-content: center;
+    font-size: 3.5rem;
+    background-color: var(--yellow);
+    width: 70%;
+    margin: 0 auto;
+    border-radius: 0.5rem;
+}
+
+.newCategory .link{
+    text-decoration: none;
+    color: var(--brown);
+}
+
+.modal {
+    display: flex;
+    position: absolute;
+    top: 12rem;
+    left: 5rem;
+    right: 5rem;
+    bottom: 40rem;
+    background-color: papayawhip;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    border-radius: 0.5rem;
+    text-align: center;
+  }
+
+  .modal p{
+    margin-top: 2rem;
+    width: 90%;
     font-size: 2rem;
+    font-weight: bold;
+    color: var(--brown);
+  }
+
+  .modal div{
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+  }
+
+  .modal div button{
+    margin-top: 2rem;
+    width: 8rem;
+    height: 2.5rem;
+    color: var(--brown);
+    background-color: var(--yellow);
+    border-style: none;
+    border-radius: 0.5rem;
+  }
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(85, 76, 76, 0.397);
+  }
+
+  .categoryItem{
+    margin-top: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 3rem;
     text-decoration: none;
     color: var(--yellow);
-}
+  }
 
-.menuItem{
-    margin-top: 2.6rem;
-    font-size: 1.5rem;
-}
+  .categoryItem .btn{
+    text-align: center;
+    margin-top: 2rem;
+    width: 12rem;
+    height: 4.5rem;
+    color: var(--brown);
+    background-color: var(--yellow);
+    border-style: none;
+    border-radius: 0.5rem;
+  }
 
-.headerItens{
+
+  .form input, .selectForm{
+    width: 25rem;
+    height: 3.5rem;
+    font-size: 2rem;
+    border-radius: 0.5rem;
+    text-align: center;
+    font-weight: bold;
+  }
+
+  .form label{
+    margin: 1rem 0;
+    font-size: 2.5rem;
+    color: var(--yellow);
+  }
+
+  .form .imageBtn{
+    margin-top: 2rem;
     display: flex;
-    justify-content: space-between;
-    margin-top: 3rem;
-    border-bottom: dotted var(--yellow);
-    padding: 0;
+    flex-direction: column;
+  }
+
+  .form .imageBtn input{
+    height: 10rem;
 }
 
-.image{
-    margin-top: 1rem;
-    width: 30rem;
-    background-color: #351e19;
-    height: auto;
-    border-radius: .2rem;
+/* whatsapp botão */
+.whatsapp{
+    color:#25d366;
+    position: fixed;
+    bottom: 1rem;
+    right: 1rem; 
 }
 
-.priceItem{
-    position: relative;
-    top: 1.2rem;
-    background-color: var(--brown);
-    padding: 0 0.4rem;
+@media (min-width:500px){
+    body{
+        width: 80%;
+        margin: 0 auto;
+    }
 }
 
-.textItem{
-    position: relative;
-    top: 0.8rem;
-    right: 0.3rem;
-    background-color: var(--brown);
-    padding: 0 0.4rem;
+@media (min-width:1000px){
+    body{
+        width: 50%;
+        margin: 0 auto;
+    }
+
+    .editMenu{
+        display: inline-flex;
+        flex-direction: column;
+        position: absolute;
+    }
+    .selectCategory{
+        justify-content: center;
+        align-items: center;
+        margin: 3rem 20rem
+    }
+
+    .newCategory{
+        width: 50%;
+    }
 }
 
-.description{
-    color: rgb(233, 194, 143);
+@media (min-width:1600px) {
+    html{
+        font-size: 80%;
+    }
+    body{
+        width: 40%;
+        margin: 0 auto;
+    }
+
+    .modal{
+        bottom: 35rem;
+        left: 50rem;
+        right: 50rem;
+    }
+
+    .form input{
+        width: 40rem;
+    }
+    .form .inputItem{
+       width: 70rem;
+      }
 }
+

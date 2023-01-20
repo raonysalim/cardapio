@@ -7,10 +7,10 @@ import { Context } from "../Context/AuthContext";
 export default function Login() {
   const navigate = useNavigate();
   const { register, handleSubmit } = useForm();
-  const [display, setDisplay] = useState("erro");
+  const [display, setDisplay] = useState("hidden");
   const { handleLogin } = useContext(Context);
   const onSubmit = async (data) => {
-    (await handleLogin(data)) ? navigate("/admin") : setDisplay("");
+    (await handleLogin(data)) ? navigate("/admin") : setDisplay("erro");
   };
   return (
     <div>

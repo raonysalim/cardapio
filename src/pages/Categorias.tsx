@@ -15,16 +15,17 @@ export default function Categorias() {
   return (
     <div>
       <Title />
-      <CategoryTitle />
+      <CategoryTitle
+        msg={"Clique na categoria desejada para visualizar nossas opções!"}
+      />
       <br /> <br />
       {categorias.map((v) => {
+        if (v.name == "Ocultar") return;
         return (
-          <div className="menu" key={v.id}>
-            <span>
-              <Link className="subtitle" to={`/itens/${v.id}`}>
-                {v.name}
-              </Link>
-            </span>
+          <div className="categoryMenu" key={v.id}>
+            <Link className="content" to={`/itens/${v.id}`}>
+              {v.name}
+            </Link>
           </div>
         );
       })}

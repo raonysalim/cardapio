@@ -25,8 +25,8 @@ export default function AdminCategory() {
         return (
           <div key={v.id}>
             <span>
-              <Link to={`/admin/itens/${v.id}`} className="subtitle">
-                {v.name}
+              <Link to={`/admin/itens/${v.id}`} className="categoryItem">
+                <p>{v.name}</p>
               </Link>
             </span>
           </div>
@@ -35,9 +35,11 @@ export default function AdminCategory() {
       <br />
       <br />
       <br />
-      <Link to={"/admin/edit/itens"} className="subtitle">
-        Novo item
-      </Link>
+      <div className="newCategory">
+        <Link to={"/admin/edit/itens"} className="link">
+          Novo Item
+        </Link>
+      </div>
     </div>
   );
 }

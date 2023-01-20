@@ -1,12 +1,16 @@
 import { Link } from "react-router-dom";
+import Whatsapp from "./Whatsapp";
 
-export default function CategoryTitle() {
+export default function CategoryTitle({ msg }) {
   return (
-    <>
-      <Link to={"/categorias"} className="menuTitle">
-        Cardápio
-      </Link>
-      <p>Clique na categoria desejada para visualizar nossas opções!</p>
-    </>
+    <div>
+      <div className="categoryTitle">
+        <Link to={"/categorias"} className="contentSubtitle">
+          Cardápio
+        </Link>
+        <p>{msg}</p>
+      </div>
+      <Whatsapp />
+    </div>
   );
 }

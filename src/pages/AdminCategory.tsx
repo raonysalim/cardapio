@@ -41,6 +41,7 @@ export default function AdminCategory() {
       <Title />
       <EditMenu />
       {categorias.map((v) => {
+        if (v.name == "Ocultar") return;
         return (
           <div key={v.id}>
             <span className="selectCategory">
@@ -70,9 +71,11 @@ export default function AdminCategory() {
       <br />
       <br />
       <br />
-      <Link to={"/admin/edit/category"} className="subtitle">
-        Nova Categoria
-      </Link>
+      <div className="newCategory">
+        <Link to={"/admin/edit/category"} className="link">
+          Nova Categoria
+        </Link>
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -80,16 +83,21 @@ export default function AdminCategory() {
         className="modal"
         overlayClassName="overlay"
       >
-        <h1>Deseja excluir {name}?</h1>
+        <p>
+          Deseja excluir a categoria {name}?(Todos os itens serão excluidos
+          juntos )
+        </p>
         <br />
-        <button
-          onClick={() => {
-            DeleteCategory(id);
-          }}
-        >
-          Sim
-        </button>
-        <button onClick={closeModal}>Não</button>
+        <div>
+          <button
+            onClick={() => {
+              DeleteCategory(id);
+            }}
+          >
+            Sim
+          </button>
+          <button onClick={closeModal}>Não</button>
+        </div>
       </Modal>
     </div>
   );

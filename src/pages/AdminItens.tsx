@@ -61,6 +61,7 @@ export default function AdminItens() {
               >
                 <AiFillEdit size={25} />
               </button>
+
               <button
                 className="btnEdit"
                 onClick={() => {
@@ -78,9 +79,11 @@ export default function AdminItens() {
       <br />
       <br />
       <br />
-      <Link to={"/admin/edit/itens?image="} className="subtitle">
-        Novo Item
-      </Link>
+      <div className="newCategory">
+        <Link to={"/admin/edit/itens?image="} className="link">
+          Novo Item
+        </Link>
+      </div>
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
@@ -88,16 +91,18 @@ export default function AdminItens() {
         className="modal"
         overlayClassName="overlay"
       >
-        <h1>Deseja excluir {name}?</h1>
+        <p>Deseja excluir {name}?</p>
         <br />
-        <button
-          onClick={() => {
-            DeleteItem(id);
-          }}
-        >
-          Sim
-        </button>
-        <button onClick={closeModal}>Não</button>
+        <div>
+          <button
+            onClick={() => {
+              DeleteItem(id);
+            }}
+          >
+            Sim
+          </button>
+          <button onClick={closeModal}>Não</button>
+        </div>
       </Modal>
     </div>
   );
